@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Cores do tema missionário adventista */
+    --primary-green: 147 35% 27%;
+    --primary-green-light: 147 35% 37%;
+    --primary-green-dark: 147 35% 17%;
+    --accent-gold: 30 45% 65%;
+    --accent-orange: 24 75% 55%;
+    --accent-blue: 197 33% 44%;
+    --urgent-red: 14 55% 50%;
+    --success: 140 30% 42%;
+    
+    /* Cores neutras */
+    --neutral-white: 40 20% 98%;
+    --neutral-cream: 38 30% 94%;
+    --neutral-beige: 35 25% 87%;
+    --neutral-brown: 30 25% 44%;
+    --neutral-dark: 30 30% 13%;
+    
+    /* Shadcn theme variables */
+    --background: 40 20% 98%;
+    --foreground: 30 30% 13%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 30% 13%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 30% 13%;
+    --primary: 147 35% 27%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 38 30% 94%;
+    --secondary-foreground: 30 30% 13%;
+    --muted: 35 25% 87%;
+    --muted-foreground: 30 25% 44%;
+    --accent: 30 45% 65%;
+    --accent-foreground: 30 30% 13%;
+    --destructive: 14 55% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 35 25% 87%;
+    --input: 35 25% 87%;
+    --ring: 147 35% 27%;
+    --radius: 0.5rem;
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+  }
+  
+  blockquote, .quote {
+    font-family: 'Crimson Text', serif;
+  }
+}
+
+@layer components {
+  /* Botões */
+  .btn-primary {
+    @apply bg-[hsl(var(--primary-green))] text-white px-7 py-3.5 rounded-lg font-semibold text-sm uppercase tracking-wide
+           transition-all duration-200 hover:bg-[hsl(var(--primary-green-light))] hover:-translate-y-0.5
+           shadow-[0_4px_12px_rgba(45,90,61,0.3)] hover:shadow-[0_6px_16px_rgba(45,90,61,0.4)];
+  }
+  
+  .btn-secondary {
+    @apply bg-transparent border-2 border-[hsl(var(--primary-green))] text-[hsl(var(--primary-green))] 
+           px-7 py-3.5 rounded-lg font-semibold text-sm uppercase tracking-wide
+           transition-all duration-200 hover:bg-[hsl(var(--primary-green))] hover:text-white;
+  }
+  
+  .btn-accent {
+    @apply bg-[hsl(var(--accent-orange))] text-white px-7 py-3.5 rounded-lg font-semibold text-sm uppercase tracking-wide
+           transition-all duration-200 hover:bg-[hsl(var(--urgent-red))] hover:-translate-y-0.5
+           shadow-[0_4px_12px_rgba(224,123,57,0.4)];
+  }
+  
+  /* Cards */
+  .card-missionary {
+    @apply bg-white rounded-2xl shadow-[0_4px_20px_rgba(0,0,0,0.08)] overflow-hidden
+           transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)];
+  }
+  
+  .card-project {
+    @apply bg-[hsl(var(--neutral-cream))] rounded-xl border border-[hsl(var(--neutral-beige))] p-6;
+  }
+  
+  .card-urgent {
+    @apply bg-gradient-to-br from-[#FFF5F0] to-[#FFEEE5] rounded-2xl border-2 border-[hsl(var(--accent-orange))] p-6;
+  }
+  
+  /* Seções */
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+  
+  .container-missionary {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+  
+  /* Texto */
+  .text-gradient {
+    @apply bg-gradient-to-r from-[hsl(var(--primary-green))] to-[hsl(var(--accent-gold))] bg-clip-text text-transparent;
+  }
+  
+  /* Badge urgente */
+  .badge-urgent {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[hsl(var(--urgent-red))] text-white text-xs font-semibold;
+    animation: pulse-urgent 2s ease-in-out infinite;
+  }
+  
+  /* Progress bar */
+  .progress-bar {
+    @apply h-2 bg-[hsl(var(--neutral-beige))] rounded-full overflow-hidden;
+  }
+  
+  .progress-bar-fill {
+    @apply h-full rounded-full bg-gradient-to-r from-[hsl(var(--primary-green))] to-[hsl(var(--accent-gold))];
+  }
+}
+
+@layer utilities {
+  /* Animações */
+  @keyframes pulse-urgent {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+  }
+  
+  /* Scroll reveal */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Stagger delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+  
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--neutral-cream));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--neutral-brown));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary-green));
+}
+
+/* Selection */
+::selection {
+  background: hsl(var(--primary-green));
+  color: white;
+}
